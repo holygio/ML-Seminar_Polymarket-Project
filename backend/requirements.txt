@@ -1,0 +1,10 @@
+requests==2.31.0
+pandas==2.1.4
+numpy==1.26.2
+pytz==2023.3
+yfinance==0.2.36
+scipy==1.11.4
+statsmodels==0.14.1
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.7
