@@ -1,0 +1,55 @@
+21:55:54  INFO      ====================================================
+21:55:54  INFO      POLYMARKET PIPELINE  2026-04-03
+21:55:54  INFO      MODE: DRY RUN — files will NOT be written
+21:55:54  INFO      ====================================================
+21:55:54  INFO      fetching raw PM data: NFLX
+21:55:54  WARNING   NFLX: empty response
+21:55:54  INFO      fetching raw PM data: TSLA
+21:55:54  WARNING   TSLA: empty response
+21:55:54  INFO      fetching raw PM data: AAPL
+21:55:54  WARNING   AAPL: empty response
+21:55:54  INFO      fetching raw PM data: NVDA
+21:55:54  WARNING   NVDA: empty response
+21:55:54  INFO      fetching raw PM data: GOOGL
+21:55:54  WARNING   GOOGL: empty response
+21:55:54  INFO      fetching raw PM data: META
+21:55:54  WARNING   META: empty response
+21:55:54  INFO      fetching raw PM data: MSFT
+21:55:54  WARNING   MSFT: empty response
+21:55:54  INFO      fetching raw PM data: AMZN
+21:55:54  WARNING   AMZN: empty response
+21:57:42  INFO      ====================================================
+21:57:42  INFO      POLYMARKET PIPELINE  2026-04-03
+21:57:42  INFO      MODE: DRY RUN — files will NOT be written
+21:57:42  INFO      ====================================================
+21:57:42  INFO      fetching raw PM data: NFLX
+22:05:20  INFO      NFLX: 12047 rows
+22:05:20  INFO      fetching raw PM data: TSLA
+22:12:39  INFO      TSLA: 14042 rows
+22:12:39  INFO      fetching raw PM data: AAPL
+22:21:10  INFO      AAPL: 16134 rows
+22:21:10  INFO      fetching raw PM data: NVDA
+22:28:55  INFO      NVDA: 17344 rows
+22:28:55  INFO      fetching raw PM data: GOOGL
+22:36:40  INFO      GOOGL: 16906 rows
+22:36:40  INFO      fetching raw PM data: META
+22:44:39  INFO      META: 10444 rows
+22:44:39  INFO      fetching raw PM data: MSFT
+22:52:15  INFO      MSFT: 14775 rows
+22:52:15  INFO      fetching raw PM data: AMZN
+22:59:38  INFO      AMZN: 11968 rows
+22:59:38  INFO      raw orderbook total: 113660 rows, 8 assets
+22:59:38  INFO      building pre-open signals...
+22:59:38  WARNING   signals_today is empty — no pre-open data found
+22:59:38  INFO      attaching stock data...
+22:59:39  INFO      enriched orderbook: 113660 rows
+22:59:39  INFO      collapsing to windows...
+22:59:40  INFO      panel after collapse: (12400, 17)
+22:59:40  INFO      computing lead-lag...
+22:59:40  INFO      panel after lead-lag: (12400, 21)
+22:59:40  INFO      ====================================================
+22:59:40  INFO      PIPELINE COMPLETE
+22:59:40  INFO        signals rows:  0
+22:59:40  INFO        panel rows:    12400
+22:59:40  INFO        assets ok:     ['NFLX', 'TSLA', 'AAPL', 'NVDA', 'GOOGL', 'META', 'MSFT', 'AMZN']
+22:59:40  INFO      ====================================================
