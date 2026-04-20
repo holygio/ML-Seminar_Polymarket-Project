@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv/
+venv/
+*.log
+
+# Node
+node_modules/
+.next/
+.turbo/
+dist/
+
+# Data files — large CSVs kept out of git
+dashboard/backend/data/*.csv
+dashboard/backend/data/*.json
+
+# Logs
+dashboard/backend/logs/
+dashboard/backend/server.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Misc
+*.pyc
+*.pyo

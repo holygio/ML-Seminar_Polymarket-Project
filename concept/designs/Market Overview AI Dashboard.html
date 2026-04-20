@@ -1,0 +1,372 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.root{background:#080e1a;font-family:'Courier New',monospace;color:#e2e8f0;min-height:640px}
+.banner{height:52px;border-bottom:1px solid #111e2e;display:flex;overflow:hidden;background:#060c16}
+.banner-inner{display:flex;height:100%;flex-shrink:0}
+.bitem{display:flex;flex-direction:column;justify-content:center;padding:0 18px;border-right:1px solid #0f1a2a;min-width:140px}
+.b-top{display:flex;align-items:baseline;gap:8px}
+.b-ticker{font-size:11px;font-weight:500;letter-spacing:2px;color:#94a3b8}
+.b-ret{font-size:11px;font-weight:500;font-family:'Courier New',monospace}
+.b-spark{height:18px;margin-top:3px}
+.b-cat{font-size:8px;letter-spacing:1.5px;color:#1e3a5f;text-transform:uppercase;margin-top:1px}
+.header{padding:10px 16px 6px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid #0a1420}
+.h-left{display:flex;flex-direction:column;gap:2px}
+.h-title{font-size:15px;font-weight:500;color:#f1f5f9;letter-spacing:0.5px}
+.h-sub{font-size:9px;color:#334155;letter-spacing:1.5px;text-transform:uppercase}
+.h-right{display:flex;align-items:center;gap:6px}
+.live-dot{width:5px;height:5px;border-radius:50%;background:#22c55e}
+.live-txt{font-size:9px;color:#334155;letter-spacing:1px;text-transform:uppercase}
+.h-date{font-size:10px;color:#1e3a5f;margin-left:8px;letter-spacing:0.5px}
+.body{display:grid;grid-template-columns:1fr 0.62fr;gap:1px;background:#0a1420;margin:10px 12px;border-radius:6px;overflow:hidden}
+.left-panel{background:#080e1a;padding:10px}
+.right-panel{background:#080e1a;padding:10px;display:flex;flex-direction:column;gap:8px}
+.sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.sec-title{font-size:9px;letter-spacing:2px;color:#475569;text-transform:uppercase;display:flex;align-items:center;gap:6px}
+.sec-dot{width:5px;height:5px;border-radius:50%;display:inline-block}
+.sec-time{font-size:8px;color:#1e3a5f;letter-spacing:0.5px}
+.treemap{display:grid;grid-template-columns:1.6fr 1fr 0.9fr;grid-template-rows:auto auto;gap:2px;height:420px}
+.tile{position:relative;overflow:hidden;border-radius:3px;cursor:pointer;border:1px solid rgba(255,255,255,0.04)}
+.tile:hover{border-color:rgba(255,255,255,0.12)}
+.tile-bg{position:absolute;inset:0}
+.tile-content{position:absolute;inset:0;padding:10px 10px 8px;display:flex;flex-direction:column;justify-content:space-between;z-index:2}
+.t-top{display:flex;flex-direction:column;gap:2px}
+.t-ticker{font-size:15px;font-weight:500;letter-spacing:1px;color:#f1f5f9}
+.t-ret{font-size:12px;font-family:'Courier New',monospace}
+.t-price{font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:0.5px;margin-top:2px}
+.t-bot{display:flex;align-items:flex-end;justify-content:space-between}
+.t-poly{display:flex;flex-direction:column;align-items:flex-end;gap:1px}
+.t-poly-val{font-size:10px;font-family:'Courier New',monospace;font-weight:500}
+.t-poly-label{font-size:7px;letter-spacing:1px;color:rgba(255,255,255,0.3);text-transform:uppercase}
+.t-vol{font-size:8px;padding:2px 5px;border-radius:2px;letter-spacing:0.5px}
+.t-span-2{grid-row:span 2}
+.right-grid-6{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.right-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.rtile{position:relative;overflow:hidden;border-radius:3px;border:1px solid rgba(255,255,255,0.04);cursor:pointer;min-height:72px}
+.rtile:hover{border-color:rgba(255,255,255,0.1)}
+.rtile-bg{position:absolute;inset:0}
+.rtile-content{position:absolute;inset:0;padding:7px 8px;display:flex;flex-direction:column;justify-content:space-between;z-index:2}
+.rt-top{display:flex;justify-content:space-between;align-items:flex-start}
+.rt-name{font-size:9px;font-weight:500;color:#cbd5e1;letter-spacing:0.5px}
+.rt-date{font-size:7px;color:rgba(255,255,255,0.25);letter-spacing:0.5px}
+.rt-ret{font-size:11px;font-weight:500;font-family:'Courier New',monospace}
+.rt-mid{font-size:13px;font-weight:500;font-family:'Courier New',monospace;color:#f1f5f9;margin:2px 0}
+.rt-poly{font-size:8px;font-weight:500;letter-spacing:0.5px}
+.divider{height:1px;background:#0a1420;margin:0 -10px}
+</style>
+<div class="root">
+
+<div class="banner">
+  <div class="banner-inner">
+    <div class="bitem">
+      <div class="b-top"><span class="b-ticker">AMZN</span><span class="b-ret" style="color:#22c55e">+2.44%</span></div>
+      <svg class="b-spark" viewBox="0 0 80 18" preserveAspectRatio="none"><polyline points="0,14 10,12 20,13 30,10 40,11 50,8 60,6 70,5 80,3" fill="none" stroke="#22c55e" stroke-width="1.2"/></svg>
+      <div class="b-cat">US Equities</div>
+    </div>
+    <div class="bitem">
+      <div class="b-top"><span class="b-ticker">GOOGL</span><span class="b-ret" style="color:#ef4444">-0.22%</span></div>
+      <svg class="b-spark" viewBox="0 0 80 18" preserveAspectRatio="none"><polyline points="0,8 10,9 20,8 30,10 40,12 50,11 60,13 70,14 80,14" fill="none" stroke="#ef4444" stroke-width="1.2"/></svg>
+      <div class="b-cat">US Equities</div>
+    </div>
+    <div class="bitem">
+      <div class="b-top"><span class="b-ticker">META</span><span class="b-ret" style="color:#22c55e">+0.16%</span></div>
+      <svg class="b-spark" viewBox="0 0 80 18" preserveAspectRatio="none"><polyline points="0,10 10,11 20,9 30,10 40,9 50,8 60,9 70,8 80,8" fill="none" stroke="#22c55e" stroke-width="1.2"/></svg>
+      <div class="b-cat">US Equities</div>
+    </div>
+    <div class="bitem">
+      <div class="b-top"><span class="b-ticker">MSFT</span><span class="b-ret" style="color:#ef4444">-0.38%</span></div>
+      <svg class="b-spark" viewBox="0 0 80 18" preserveAspectRatio="none"><polyline points="0,6 10,7 20,8 30,9 40,10 50,11 60,12 70,13 80,14" fill="none" stroke="#ef4444" stroke-width="1.2"/></svg>
+      <div class="b-cat">US Equities</div>
+    </div>
+    <div class="bitem">
+      <div class="b-top"><span class="b-ticker">NFLX</span><span class="b-ret" style="color:#22c55e">+1.19%</span></div>
+      <svg class="b-spark" viewBox="0 0 80 18" preserveAspectRatio="none"><polyline points="0,14 10,13 20,11 30,10 40,9 50,8 60,7 70,6 80,5" fill="none" stroke="#22c55e" stroke-width="1.2"/></svg>
+      <div class="b-cat">US Equities</div>
+    </div>
+    <div class="bitem">
+      <div class="b-top"><span class="b-ticker">NVDA</span><span class="b-ret" style="color:#22c55e">+2.92%</span></div>
+      <svg class="b-spark" viewBox="0 0 80 18" preserveAspectRatio="none"><polyline points="0,16 10,14 20,12 30,10 40,8 50,6 60,5 70,4 80,2" fill="none" stroke="#22c55e" stroke-width="1.2"/></svg>
+      <div class="b-cat">US Equities</div>
+    </div>
+    <div class="bitem">
+      <div class="b-top"><span class="b-ticker">TSLA</span><span class="b-ret" style="color:#22c55e">+1.85%</span></div>
+      <svg class="b-spark" viewBox="0 0 80 18" preserveAspectRatio="none"><polyline points="0,14 10,13 20,11 30,10 40,8 50,7 60,6 70,5 80,4" fill="none" stroke="#22c55e" stroke-width="1.2"/></svg>
+      <div class="b-cat">US Equities</div>
+    </div>
+    <div class="bitem">
+      <div class="b-top"><span class="b-ticker">AAPL</span><span class="b-ret" style="color:#22c55e">+0.39%</span></div>
+      <svg class="b-spark" viewBox="0 0 80 18" preserveAspectRatio="none"><polyline points="0,12 10,11 20,10 30,10 40,9 50,9 60,8 70,8 80,7" fill="none" stroke="#22c55e" stroke-width="1.2"/></svg>
+      <div class="b-cat">US Equities</div>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="h-left">
+    <div class="h-title">Yahoo + Polymarket Dashboard</div>
+    <div class="h-sub">Stocks · Indices · Crypto · Commodities</div>
+  </div>
+  <div class="h-right">
+    <div class="live-dot"></div>
+    <div class="live-txt">Live</div>
+    <div class="h-date">2026-04-10 · 14:32 ET · next refresh 8s</div>
+  </div>
+</div>
+
+<div class="body">
+  <div class="left-panel">
+    <div class="sec-header">
+      <div class="sec-title"><span class="sec-dot" style="background:#38bdf8"></span>Stocks</div>
+      <div class="sec-time">1d 4h remaining · sized by market cap</div>
+    </div>
+    <div class="treemap">
+
+      <div class="tile t-span-2" style="grid-column:1;grid-row:1/3">
+        <div class="tile-bg" style="background:linear-gradient(135deg,#0d2e1a 50%,#1a0d0d 50%)"></div>
+        <div class="tile-content">
+          <div class="t-top">
+            <div class="t-ticker">NVDA</div>
+            <div class="t-ret" style="color:#22c55e">+2.92%</div>
+            <div class="t-price">$875.40</div>
+          </div>
+          <div class="t-bot">
+            <div>
+              <div class="t-vol" style="background:#0a1e10;color:#4ade80;border:1px solid #14532d">VOL 1.8×</div>
+            </div>
+            <div class="t-poly">
+              <div class="t-poly-val" style="color:#ef4444">17%</div>
+              <div class="t-poly-label">Poly up</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile" style="grid-column:2;grid-row:1">
+        <div class="tile-bg" style="background:linear-gradient(135deg,#0d2a18 50%,#1a0d0d 50%)"></div>
+        <div class="tile-content">
+          <div class="t-top">
+            <div class="t-ticker">AAPL</div>
+            <div class="t-ret" style="color:#22c55e">+0.39%</div>
+          </div>
+          <div class="t-bot">
+            <div></div>
+            <div class="t-poly">
+              <div class="t-poly-val" style="color:#ef4444">20%</div>
+              <div class="t-poly-label">Poly up</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile" style="grid-column:2;grid-row:2">
+        <div class="tile-bg" style="background:linear-gradient(135deg,#1a0d0d 50%,#1a0d0d 50%)"></div>
+        <div class="tile-content">
+          <div class="t-top">
+            <div class="t-ticker">GOOGL</div>
+            <div class="t-ret" style="color:#ef4444">-0.22%</div>
+          </div>
+          <div class="t-bot">
+            <div></div>
+            <div class="t-poly">
+              <div class="t-poly-val" style="color:#ef4444">24%</div>
+              <div class="t-poly-label">Poly up</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile" style="grid-column:3;grid-row:1">
+        <div class="tile-bg" style="background:linear-gradient(135deg,#0d2618 50%,#1a0d0d 50%)"></div>
+        <div class="tile-content">
+          <div class="t-top">
+            <div class="t-ticker">AMZN</div>
+            <div class="t-ret" style="color:#22c55e">+2.44%</div>
+          </div>
+          <div class="t-bot">
+            <div></div>
+            <div class="t-poly">
+              <div class="t-poly-val" style="color:#ef4444">14%</div>
+              <div class="t-poly-label">Poly up</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile" style="grid-column:3;grid-row:2;display:grid;grid-template-rows:1fr 1fr 1fr;gap:2px;background:transparent;border:none;border-radius:0">
+        <div class="tile" style="position:relative;overflow:hidden">
+          <div class="tile-bg" style="background:linear-gradient(135deg,#0d2018 50%,#200d0d 50%)"></div>
+          <div class="tile-content" style="padding:6px 8px;flex-direction:row;align-items:center;justify-content:space-between">
+            <div><div class="t-ticker" style="font-size:12px">META</div><div class="t-ret" style="font-size:10px;color:#22c55e">+0.16%</div></div>
+            <div class="t-poly"><div class="t-poly-val" style="font-size:9px;color:#ef4444">25%</div><div class="t-poly-label">Poly up</div></div>
+          </div>
+        </div>
+        <div class="tile" style="position:relative;overflow:hidden">
+          <div class="tile-bg" style="background:linear-gradient(135deg,#0d2018 50%,#1a0d0d 50%)"></div>
+          <div class="tile-content" style="padding:6px 8px;flex-direction:row;align-items:center;justify-content:space-between">
+            <div><div class="t-ticker" style="font-size:12px">MSFT</div><div class="t-ret" style="font-size:10px;color:#ef4444">-0.38%</div></div>
+            <div class="t-poly"><div class="t-poly-val" style="font-size:9px;color:#ef4444">20%</div><div class="t-poly-label">Poly up</div></div>
+          </div>
+        </div>
+        <div class="tile" style="position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:transparent;border:none;border-radius:0">
+          <div class="tile" style="position:relative;overflow:hidden">
+            <div class="tile-bg" style="background:linear-gradient(135deg,#0d2018 50%,#1a0d0d 50%)"></div>
+            <div class="tile-content" style="padding:5px 6px">
+              <div class="t-ticker" style="font-size:10px">TSLA</div>
+              <div class="t-ret" style="font-size:9px;color:#22c55e">+1.85%</div>
+              <div class="t-poly-val" style="font-size:8px;color:#ef4444;margin-top:2px">18% up</div>
+            </div>
+          </div>
+          <div class="tile" style="position:relative;overflow:hidden">
+            <div class="tile-bg" style="background:linear-gradient(135deg,#0d2018 50%,#1a0d0d 50%)"></div>
+            <div class="tile-content" style="padding:5px 6px">
+              <div class="t-ticker" style="font-size:10px">NFLX</div>
+              <div class="t-ret" style="font-size:9px;color:#22c55e">+1.19%</div>
+              <div class="t-poly-val" style="font-size:8px;color:#ef4444;margin-top:2px">32% up</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;gap:12px;margin-top:8px;padding-top:6px;border-top:1px solid #0a1420">
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:1px;background:linear-gradient(135deg,#0d2e1a 50%,#1a0d0d 50%)"></div><span style="font-size:8px;color:#334155;letter-spacing:0.5px">Upper-left: stock return · lower-right: Poly crowd sentiment</span></div>
+      <div style="display:flex;gap:10px;margin-left:auto">
+        <div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;background:#0d2e1a;border-radius:1px"></div><span style="font-size:8px;color:#334155">Up</span></div>
+        <div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;background:#1a0d0d;border-radius:1px"></div><span style="font-size:8px;color:#334155">Down</span></div>
+        <div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;background:#111e2e;border-radius:1px"></div><span style="font-size:8px;color:#334155">Flat</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+
+    <div>
+      <div class="sec-header">
+        <div class="sec-title"><span class="sec-dot" style="background:#38bdf8"></span>Indices</div>
+        <div class="sec-time">1d 4h</div>
+      </div>
+      <div class="right-grid-6" style="grid-template-columns:repeat(3,1fr)">
+        <div class="rtile">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#111e2e 50%,#1e2030 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">DAX</div><div class="rt-date">Apr 13</div></div>
+            <div class="rt-ret" style="color:#475569">-0.0%</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 50%</div>
+          </div>
+        </div>
+        <div class="rtile">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#1a0d0d 50%,#1e0d0d 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">Dow Jones</div><div class="rt-date">Apr 13</div></div>
+            <div class="rt-ret" style="color:#ef4444">-0.6%</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 44%</div>
+          </div>
+        </div>
+        <div class="rtile">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#111e2e 50%,#1e2030 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">Nasdaq 100</div><div class="rt-date">Apr 13</div></div>
+            <div class="rt-ret" style="color:#22c55e">+0.1%</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 34%</div>
+          </div>
+        </div>
+        <div class="rtile">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#0d2018 50%,#1e2030 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">QQQ</div><div class="rt-date">Apr 13</div></div>
+            <div class="rt-ret" style="color:#22c55e">+0.5%</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 18%</div>
+          </div>
+        </div>
+        <div class="rtile">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#1a0d0d 50%,#1a0d0d 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">Russell 2000</div><div class="rt-date">Apr 13</div></div>
+            <div class="rt-ret" style="color:#ef4444">-0.2%</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 26%</div>
+          </div>
+        </div>
+        <div class="rtile">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#1a0d0d 50%,#1e0d0d 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">S&P 500</div><div class="rt-date">Apr 13</div></div>
+            <div class="rt-ret" style="color:#ef4444">-0.1%</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 20%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-header">
+        <div class="sec-title"><span class="sec-dot" style="background:#f59e0b"></span>Crypto</div>
+        <div class="sec-time">47 min</div>
+      </div>
+      <div class="right-grid-3">
+        <div class="rtile" style="min-height:82px">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#1a0d0d 50%,#1e0d0d 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">Bitcoin</div><div class="rt-date">Apr 12</div></div>
+            <div class="rt-ret" style="color:#ef4444">-3.1%</div>
+            <div class="rt-mid" style="font-size:11px">70,793</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 0%</div>
+          </div>
+        </div>
+        <div class="rtile" style="min-height:82px">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#1a0d0d 50%,#1e0d0d 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">Ethereum</div><div class="rt-date">Apr 12</div></div>
+            <div class="rt-ret" style="color:#ef4444">-4.6%</div>
+            <div class="rt-mid" style="font-size:11px">2,181</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 0%</div>
+          </div>
+        </div>
+        <div class="rtile" style="min-height:82px">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#1a0d0d 50%,#1e0d0d 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">Solana</div><div class="rt-date">Apr 12</div></div>
+            <div class="rt-ret" style="color:#ef4444">-3.9%</div>
+            <div class="rt-mid" style="font-size:12px">81.65</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 1%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-header">
+        <div class="sec-title"><span class="sec-dot" style="background:#a78bfa"></span>Commodities</div>
+        <div class="sec-time">1d 5h</div>
+      </div>
+      <div class="right-grid-3">
+        <div class="rtile">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#1a0d0d 50%,#1e0d0d 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">WTI</div><div class="rt-date">Apr 13</div></div>
+            <div class="rt-ret" style="color:#ef4444">-1.2%</div>
+            <div class="rt-poly" style="color:#22c55e">Poly up 88%</div>
+          </div>
+        </div>
+        <div class="rtile">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#0d2018 50%,#1e2030 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">Silver</div><div class="rt-date">Apr 13</div></div>
+            <div class="rt-ret" style="color:#22c55e">+0.7%</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 32%</div>
+          </div>
+        </div>
+        <div class="rtile">
+          <div class="rtile-bg" style="background:linear-gradient(135deg,#111e2e 50%,#1e2030 50%)"></div>
+          <div class="rtile-content">
+            <div class="rt-top"><div class="rt-name">Gold</div><div class="rt-date">Apr 13</div></div>
+            <div class="rt-ret" style="color:#475569">-0.0%</div>
+            <div class="rt-poly" style="color:#ef4444">Poly up 30%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
