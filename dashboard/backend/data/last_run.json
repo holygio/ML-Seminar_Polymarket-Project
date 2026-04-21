@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-04-21T17:11:49.253890Z",
+  "date": "2026-04-21",
+  "assets_ok": [
+    "NFLX",
+    "TSLA",
+    "AAPL",
+    "NVDA",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "AMZN",
+    "PLTR",
+    "COIN"
+  ],
+  "assets_failed": [],
+  "panel_rows": 14045,
+  "signals_rows": 10
+}

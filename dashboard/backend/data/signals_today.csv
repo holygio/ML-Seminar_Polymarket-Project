@@ -1,0 +1,11 @@
+ticker,date,pre_open_implied_prob,overnight_prob_change,pre_open_pm_volume,pre_open_buy_ratio,is_high_liquidity,signal_direction,signal_quality_score,true_sentiment
+AAPL,2026-04-21,0.35,-0.03,331.41,0.448,False,DOWN,6.0,
+AMZN,2026-04-21,0.89,0.03,3107.92,0.5377,True,UP,8.0,
+COIN,2026-04-21,0.54,0.07,1357.54,0.5348,True,UP,10.0,
+GOOGL,2026-04-21,0.65,0.1,2632.75,0.4836,True,UP,10.0,
+META,2026-04-21,0.61,0.06,1060.6,0.5567,True,UP,10.0,
+MSFT,2026-04-21,0.6,0.09,591.51,0.5116,True,UP,10.0,
+NFLX,2026-04-21,0.32,-0.17,1741.14,0.5581,True,DOWN,10.0,
+NVDA,2026-04-21,0.6239,0.1439,1435.57,0.5107,True,UP,10.0,
+PLTR,2026-04-21,0.66,0.13,1451.9,0.5219,True,UP,10.0,
+TSLA,2026-04-21,0.64,0.11,577.94,0.5018,True,UP,10.0,
