@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-04-21T17:11:49.253890Z",
-  "date": "2026-04-21",
+  "timestamp": "2026-04-22T19:25:56.223762Z",
+  "date": "2026-04-22",
   "assets_ok": [
     "NFLX",
     "TSLA",
@@ -14,6 +14,6 @@
     "COIN"
   ],
   "assets_failed": [],
-  "panel_rows": 14045,
+  "panel_rows": 14427,
   "signals_rows": 10
 }

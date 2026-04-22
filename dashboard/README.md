@@ -151,8 +151,6 @@ dashboard/
         - static SVG assets from the Next scaffold
     .env.local
       - local frontend environment configuration
-    .git
-      - nested frontend Git repository
     .gitignore
       - frontend-local ignore rules
     .next
@@ -213,8 +211,13 @@ python -m uvicorn server:app --reload --port 8000
 ```bash
 cd dashboard/frontend
 npm install
-npm run dev
+npm run dev -- --webpack
 ```
+
+Why `--webpack`:
+
+- the current `recharts` / `d3` dependency combination is reliable under the Webpack dev server
+- Turbopack can currently fail during route compilation for chart-heavy pages such as `/asset/[ticker]`
 
 ### Step 5 — Open the app
 
@@ -306,5 +309,6 @@ Commodity source distinction:
 - `panel_15m.csv` is a legacy filename even though the current resampling window is 5 minutes.
 - `true_sentiment` is intentionally blank in `signals_today.csv` because the pre-open signal file is designed to survive even if stock enrichment fails later.
 - The Black-Scholes benchmark is a fair-value proxy for directional context, not a literal structural replication of the contract.
-- `dashboard/frontend/` still has its own `.git` repository; the workspace root is not a single clean monorepo.
+- `dashboard/frontend/` is now tracked directly in the main repository rather than as a separate nested checkout.
+- Local frontend development currently works more reliably with `npm run dev -- --webpack` than with Turbopack because of chart-library module resolution issues.
 - CORS defaults to `http://localhost:3000`; any deployment needs an explicit `CORS_ORIGINS` override.

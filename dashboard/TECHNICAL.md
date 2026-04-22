@@ -598,13 +598,14 @@ Current fields:
 ## 10. Known Issues
 
 1. `panel_15m.csv` is a legacy filename even though the current resampling interval is 5 minutes. Renaming it would require coordinated changes in the API server and any local tooling that loads it.
-2. `dashboard/frontend/` contains its own `.git` repository, so the workspace root is not a single monorepo checkout.
+2. `dashboard/frontend/` is tracked directly in the main repository now. Older notes about a nested frontend checkout are obsolete.
 3. `/api/asset/{ticker}/preopen` filters against the current New York date, not the historical pipeline run date. If the pipeline data is stale, the pre-open overlay may disappear even while older historical panels still render.
 4. The geopolitical curation layer uses Gamma `public-search` with `q=`, and some phrases can still resolve to a related rather than exact contract. These probabilities should be treated as approximate indicators.
 5. CORS defaults to `http://localhost:3000`. Any deployment needs an explicit `CORS_ORIGINS` environment variable.
 6. `run_daily.py --dry-run` still performs live network calls. It only suppresses writes to disk.
 7. The frontend production build is type-sensitive and currently passing. Earlier type issues around inlined heatmap component props were resolved during consolidation.
 8. Market-data fallbacks remain necessary because Yahoo throttling and response inconsistency are still common. Gold and silver therefore use Stooq spot-style snapshots in the live bundle.
+9. For local development, `next dev --webpack` is currently the safer frontend entrypoint. Turbopack has shown module-resolution failures with the current `recharts` / `d3` dependency tree on chart-heavy routes.
 
 ## 11. Running in Production
 
@@ -634,3 +635,7 @@ Suggested target: Vercel
   - `npm run build`
 - output:
   - standard Next.js `.next/` build output
+
+Local dev note:
+
+- prefer `npm run dev -- --webpack` until the Turbopack compatibility issue with the chart stack is resolved
